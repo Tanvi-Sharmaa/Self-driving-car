@@ -1,112 +1,108 @@
 # Self-driving-car
-# Road_Segmemtation
 
-# Introduction:
+## Introduction:
 A self-driving car, also known as an autonomous car or driverless car, is a vehicle that can travel between destinations without the need of any human effort. They can process streams of data from different sensors such as cameras, LiDAR, RADAR, GPS, or inertia sensors. This data is then modeled using deep learning algorithms, which then make decisions relevant to the environment the car is in. 
 
 This repository consists of three sections: 
 1. Road lane detection using Computer Vision. 
 2. Object detection using YOLOv3 algorithm.
 3. Traffic signs detection using Convolutional Neural Networks (CNN).
-# Model Architecture:
+
+This work was done as exploratory project Under the supervision of Prof. Rakesh Kumar Mishra on the topic of "SELF DRIVING CAR" 
+by
+- Tanvi 
+- Muskan
+- Lavi Goyal
+
+
+# TASK : LANE DETECTION
+One of the many steps involved during the training of an autonomous driving car is lane
+detection, which is the preliminary step.:
+
 <p align = "center">
-<img src ="./architecture.jpg" align = "center"/>
+<img src ="https://github.com/Tanvi-Sharmaa/Self-driving-car/blob/main/lane%20detection%20steps.png" align = "center"/>
 </p>
 <br>
-In the above shown model, the pretrained VGG-16 networks are used as encoder. The VGG_16 was trained on pretrained on ImageNet for classification. The 
-pretrained weights can be found on the link - <a href = "https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/vgg.zip">Udacity Self Driving Car</a>
 
-# Files and Folders:
+# TASK : OBJECT DETECTION
+Object detection is also one of the critical components to support autonomous driving.
+Autonomous vehicles rely on the perception of their surroundings to ensure safe and robust
+driving performance. This perception system uses object detection algorithms to accurately
+determine objects such as pedestrians, vehicles, traffic signs, and barriers in the vehicle's vicinity
 
-<ol>
-  <li><B>Dataset folder : </B>This folder contains the dataset.</li>
-  <li><B>Masked Dataset folder : </B>This folder has the dataset in the masked form. The masking was done manually.</li>
-  <li><B>Final Showdown folder : </B>This folder has final outputs or predictions by the model.</li>
-  <li><B>FCN folder : </B>This folder has all the codes for the model.</li>
-  <li><B>FCN_combo folder : <B>This folder contains the codes for both image and video predictions.</li>
-  <li><B>Report_and_Results.pdf file : <B>This folder contains the report of the project.</li>
-  <li><B>resize_red_masking.py : <B>This file is reponsible for resizing the image and making semanted mask of it.</li>
-</ol>
+For this we have used YOLOv3 along with open cv to detect objects.
 
-# Installation :
+  
+## What is YOLO ?
+• YOLO (You Only Look Once) is an algorithm that detects and recognizes various objects
+in a picture (in real-time). Object detection in YOLO is done as a regression problem and
+provides the class probabilities of the detected images.
+  
+• YOLO algorithm employs convolutional neural networks (CNN) to detect objects in
+real-time. As the name suggests, the algorithm requires only a single forward propagation
+through a neural network to detect objects.
+  
+• This means that prediction in the entire image is done in a single algorithm run. The CNN
+is used to predict various class probabilities and bounding boxes simultaneously.
+  
+• The YOLO algorithm consists of various variants. Some of the common ones include tiny
+YOLO and YOLOv3.
 
-Go to this link to see, how to train and predict from the model --->  <a href = "https://github.com/AYUSH-ISHAN/Road_Segmentation/tree/main/FCN#training--">For images</a> and <a href = "https://github.com/AYUSH-ISHAN/Road_Segmentation/tree/main/FCN_combo#training--">for Videos and Image</a>both predictions.
+## Benefits of YOLO:
+It has high Speed, High accuracy and Learning capabilities
+  
+## Architecture:
+This architecture takes an image as input and resizes it to 448*448 by keeping the aspect ratio
+the same and performing padding. 
 
-# Results on sample images:
+This image is then passed in the CNN network. This model has 24 convolution layers and 4 max-pooling layers followed by 2 fully connected layers. To
+reduce the number of layers (Channels), we use 1*1 convolution followed by 3*3 convolution.
+This is done by generating (1, 1470) from the final fully connected layer and reshaping it to size (7, 7, 30).
+This architecture uses Leaky ReLU as its activation function in the whole architecture except for the layer where it uses a linear activation function.
+  
+# Task: ROAD SIGN DETECTION AND RCEOGNITION
+Traffic-sign recognition is a challenging subject and also a valuable subject in traffic engineering
+research. Traffic signs contain necessary messages about vehicle safety and they show the latest
+traffic conditions, define road rights, forbid and allow some behaviors and driving routes, etc.
 
-<table>
+## Solution:
+We have used CNN based on a transfer of learning method for detection of traffic signs. Deep
+CNN is trained with a big data set, and then effective regional convolutional neural network
+(RCNN) detection is obtained through a spot of standard traffic training examples.
+
+## What is CNN?
+A convolutional neural network (CNN) is a type of artificial neural network used in image
+recognition and processing that is specifically designed to process pixel data.
+CNN is very similar to the brain as it also has neurons which in turn have weights and biases.
+Each neuron receives an input on which it performs some operation, and the output is passed as
+the input to the next neuron. It can have many layers, the first is the input layer, and the last is the
+output layer. Anything else in between is called a hidden layer.
+
+## Results for Road Sign Detection and Recognition
+  <table>
   <tr>
-    <td align = "center"><B>IMAGE</B></td>
-    <td align = "center"><B>MASK</B></td>
-    <td align = "center"><B>OUTPUT</B></td>
+    <td align = "center"><B>Input</B></td>
+    <td align = "center"><B>Output</B></td>
   </tr>
   <tr>
-    <td><img src = "./dataset/umm_road_1.png" height = "150", width = "250"/></td>
-    <td><img src = "./masked_dataset/umm_road_1.png" height = "150", width = "250"/></td>
-    <td><img src = "./Final_Showdown/umm_road_1.png" height = "150", width = "250"/></td>
+    <td><img src = "https://github.com/Tanvi-Sharmaa/Self-driving-car/blob/main/road_sign_detection_i1.jpeg" height = "350", width = "450"/></td>
+    <td><img src = "https://github.com/Tanvi-Sharmaa/Self-driving-car/blob/main/road_sign_detection_i2.jpeg" height = "350", width = "450"/></td>
  </tr>
-  <tr>
-    <td><img src = "./dataset/umm_road_5.png" height = "150", width = "250"/></td>
-    <td><img src = "./masked_dataset/umm_road_5.png" height = "150", width = "250"/></td>
-    <td><img src = "./Final_Showdown/umm_road_5.png" height = "150", width = "250"/></td>
- </tr>
-  <tr>
-    <td><img src = "./dataset/umm_road_valley.png" height = "150", width = "250"/></td>
-    <td><img src = "./masked_dataset/umm_road_valley.png"/ height = "150", width = "250"></td>
-    <td><img src = "./Final_Showdown/umm_road_valley.png" height = "150", width = "250"/></td>
- </tr>
-  <tr>
-    <td><img src = "./dataset/umm_road_10.png" height = "150", width = "250"/></td>
-    <td><img src = "./masked_dataset/umm_road_10.png"/ height = "150", width = "250"></td>
-    <td><img src = "./Final_Showdown/umm_road_10.png" height = "150", width = "250"/></td>
- </tr>
-  <tr>
-    <td><img src = "./dataset/umm_road_20.png"/ height = "150", width = "250"></td>
-    <td><img src = "./masked_dataset/umm_road_20.png" height = "150", width = "250"/></td>
-    <td><img src = "./Final_Showdown/umm_road_20.png" height = "150", width = "250"/></td>
- </tr>
-  <tr>
-    <td><img src = "./dataset/umm_road_40.png" height = "150", width = "250"/></td>
-    <td><img src = "./masked_dataset/umm_road_40.png" height = "150", width = "250"/></td>
-    <td><img src = "./Final_Showdown/umm_road_40.png" height = "150", width = "250"/></td>
- </tr>
-  <tr>
-    <td><img src = "./dataset/umm_road_30.png" height = "150", width = "250"/></td>
-    <td><img src = "./masked_dataset/umm_road_30.png" height = "150", width = "250"/></td>
-    <td><img src = "./Final_Showdown/umm_road_30.png" height = "150", width = "250"/></td>
- </tr>
-  <tr>
-    <td><img src = "./dataset/umm_road_1.png" height = "150", width = "250"/></td>
-    <td><img src = "./masked_dataset/umm_road_1.png" height = "150", width = "250"/></td>
-    <td><img src = "./Final_Showdown/umm_road_1.png" height = "150", width = "250"/></td>
- </tr>
-  <tr>
-    <td><img src = "./dataset/forest_dataset/umm_road_4.png" height = "150", width = "250"/></td>
-    <td><img src = "./masked_dataset/forest_masked/umm_road_4.png" height = "150", width = "250"/></td>
-    <td><img src = "./Final_Showdown/forest_final/umm_road_4.png" height = "150", width = "250"/></td>
- </tr>
-  <tr>
-    <td><img src = "./dataset/forest_dataset/umm_road_6.png" height = "150", width = "250"/></td>
-    <td><img src = "./masked_dataset/forest_masked/umm_road_6.png" height = "150", width = "250"/></td>
-    <td><img src = "./Final_Showdown/forest_final/umm_road_6.png" height = "150", width = "250"/></td>
- </tr>
-  <tr>
-    <td><img src = "./dataset/forest_dataset/umm_road_66.png" height = "150", width = "250"/></td>
-    <td><img src = "./masked_dataset/forest_masked/umm_road_66.png" height = "150", width = "250"/></td>
-    <td><img src = "./Final_Showdown/forest_final/umm_road_66.png" height = "150", width = "250"/></td>
- </tr>
-  <tr>
-    <td><img src = "./dataset/forest_dataset/umm_road_88.png" height = "150", width = "250"/></td>
-    <td><img src = "./masked_dataset/forest_masked/umm_road_88.png" height = "150", width = "250"/></td>
-    <td><img src = "./Final_Showdown/forest_final/umm_road_88.png" height = "150", width = "250"/></td>
- </tr>
-  
- </table>
-
-# Results on sample videos:
-
-<img src = "./video_prediction.gif">
+  </table>
     
-# References:
-<a href = "https://github.com/JunshengFu/semantic_segmentation">Source 1</a><br>
-<a href = "https://github.com/lb5160482/Road-Semantic-Segmentation/">Source 2</a>
+# Results and Conclusion:
+Road lanes, obstacles around the car and traffic signs detection is a requisite part of autonomous
+driving.
+Lane detection which was done using computer vision identified the lanes properly.
+Yolo v3 algorithm which was used for object detection has high speed, accuracy and learning
+capabilities. However, the algorithm struggles to detect small objects and low-resolution objects.
+Moreover, the yolov3 trained model may not be ideal when large datasets are hard to obtain.
+    
+Accuracy of 98.9% was achieved using the CNN trained model for traffic sign detection. One of
+the limitations of the model is that it cannot be trained on a different dimension of images. So it
+is mandatory to have same dimension in the dataset. Another limitation is that due to a large
+number of classes it was not able to predict a few traffic signs correctly.
+    
+Autonomous vehicle technology is not yet mature enough. Still, it needs rigorous exposure to a
+wide range of traffic, landscape, and natural conditions in which the autonomous vehicles can be
+trained to perform as expected in actual traffic conditions.
