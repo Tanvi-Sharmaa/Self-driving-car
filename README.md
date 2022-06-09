@@ -24,6 +24,10 @@ detection, which is the preliminary step.:
 </p>
 <br>
 
+## Results for Lane Detection
+https://user-images.githubusercontent.com/97230066/172736335-19eba72c-0df6-4cc2-bba8-0948f90ffebc.mp4
+
+
 # TASK : OBJECT DETECTION
 Object detection is also one of the critical components to support autonomous driving.
 Autonomous vehicles rely on the perception of their surroundings to ensure safe and robust
@@ -32,7 +36,10 @@ determine objects such as pedestrians, vehicles, traffic signs, and barriers in 
 
 For this we have used YOLOv3 along with open cv to detect objects.
 
-  
+## Results for Object Detection
+https://user-images.githubusercontent.com/97230066/172734483-98bdba4b-5118-4199-9c88-74289763c4a4.mp4
+
+
 ## What is YOLO ?
 • YOLO (You Only Look Once) is an algorithm that detects and recognizes various objects
 in a picture (in real-time). Object detection in YOLO is done as a regression problem and
